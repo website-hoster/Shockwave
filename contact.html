@@ -3,36 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Humanicism - Contact Us</title>
+  <title>Shockwave - Contact</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    /* Contact Form Styling */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #ff3300;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+    button {
+      background: #ff3300;
+      color: #fff;
+      border: none;
+      padding: 14px 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.6);
+    }
+    button:hover {
+      background: #660000;
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.9);
+      transform: scale(1.05);
+    }
+    #status {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="sidebar">
     <a href="index.html">Home</a>
-    <a href="links.html">Community Links</a>
+    <a href="links.html">Listen</a>
     <a href="about-us.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="contact.html">Contact</a>
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Humanicism Logo" style="width:180px;height:auto;border-radius:50%;border:3px solid #00e6ff;">
-    <h1>Contact Us</h1>
+    <img src="logo.png" alt="Shockwave Logo" 
+         style="width:180px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <h1>Contact Shockwave</h1>
+    <p>For booking, press, or fan messages, send us a note below:</p>
+    
     <form id="contact-form">
       <label>Your Name:</label>
       <input type="text" name="name" placeholder="Your Name" required>
+      
       <label>Your Email:</label>
       <input type="email" name="email" placeholder="Your Email" required>
+      
       <label>Message:</label>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      
       <button type="submit">Send Message</button>
     </form>
+    
     <div id="status"></div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    emailjs.init('XOBqjVCEBe63jhrnS');
+    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your own EmailJS public key
 
     const form = document.getElementById('contact-form');
     const statusDiv = document.getElementById('status');
@@ -50,7 +103,7 @@
           statusDiv.innerHTML = '<p style="color:#00ffb0;">Message sent successfully!</p>';
           form.reset();
         }, (err) => {
-          statusDiv.innerHTML = '<p style="color:#ff5555;">Error sending message: '+err.text+'</p>';
+          statusDiv.innerHTML = '<p style="color:#ff5555;">Error sending message: ' + err.text + '</p>';
         });
     });
   </script>
