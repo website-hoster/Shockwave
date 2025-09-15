@@ -7,55 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-    }
-
-    /* ORIGINAL SIDEBAR FROM LINKS.HTML */
-    .sidebar {
-      height: 100%;
-      width: 220px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #1a1a1a;
-      padding-top: 20px;
-    }
-
-    .sidebar a {
-      display: block;
-      color: #fff;
-      padding: 12px 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .sidebar a:hover {
-      background-color: #ff3300;
-    }
-
-    /* Content Styling */
-    .content {
-      margin-left: 220px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .content h1 {
-      color: #ff3300;
-      margin-top: 20px;
-    }
-
-    .content p {
-      color: #fff;
-      font-size: 1.1em;
-      margin-bottom: 30px;
-    }
-
     /* Form Styling */
     #contact-form {
       max-width: 400px;
@@ -73,48 +24,61 @@
     #contact-form input,
     #contact-form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border-radius: 10px;
+      border: none;
       font-size: 1em;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.7);
     }
 
     #contact-form button {
       width: 100%;
-      padding: 12px;
+      padding: 15px;
       background-color: #ff3300;
       color: #fff;
       border: none;
-      border-radius: 5px;
-      font-size: 1.1em;
-      cursor: pointer;
+      border-radius: 25px;
+      font-size: 1.2em;
       font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.6);
+      transition: all 0.3s ease;
     }
 
     #contact-form button:hover {
-      background-color: #e62e00;
+      background-color: #660000;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.9);
     }
 
     #status {
       margin-top: 15px;
       font-size: 1em;
+      text-align: center;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
+      .content {
+        margin-left: 0;
+        padding: 20px;
+      }
       .sidebar {
         width: 100%;
         height: auto;
         position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
       }
       .sidebar a {
-        float: left;
-        padding: 10px;
-      }
-      .content {
-        margin-left: 0;
-        padding: 15px;
+        padding: 10px 15px;
       }
     }
   </style>
@@ -131,7 +95,7 @@
     <img src="logo.png" alt="Shockwave Logo" 
          style="width:220px; height:auto; border-radius:50%; border:3px solid #ff3300;">
     <h1>Contact Shockwave</h1>
-    <p>Need to talk to us? Reach out to us using the form below!</p>
+    <p>Need to contact us? Reach out to us using the form below!</p>
 
     <form id="contact-form">
       <label>Your Name:</label>
