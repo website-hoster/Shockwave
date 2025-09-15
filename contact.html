@@ -8,18 +8,38 @@
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     /* Sidebar Styling */
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
       color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .sidebar a:hover {
-      background-color: #ff3300;
     }
 
-    /* Content Styling */
+    .sidebar {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #1a1a1a;
+      padding-top: 20px;
+      border-right: 2px solid #ff3300;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      padding: 15px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #ff3300;
+      color: #fff;
+    }
+
     .content {
       margin-left: 220px;
       padding: 20px;
@@ -37,7 +57,6 @@
       margin-bottom: 30px;
     }
 
-    /* Form Styling */
     #contact-form {
       max-width: 400px;
       margin: 0 auto;
@@ -82,11 +101,19 @@
       font-size: 1em;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+      }
+      .sidebar a {
+        float: left;
+        padding: 10px;
+      }
       .content {
         margin-left: 0;
-        padding: 15px;
       }
     }
   </style>
@@ -108,13 +135,13 @@
     <form id="contact-form">
       <label>Your Name:</label>
       <input type="text" name="name" placeholder="Your Name" required>
-      
+
       <label>Your Email:</label>
       <input type="email" name="email" placeholder="Your Email" required>
-      
+
       <label>Message:</label>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      
+
       <button type="submit">Send Message</button>
     </form>
     <div id="status"></div>
