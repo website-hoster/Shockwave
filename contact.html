@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humanicism - Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="links.html">Community Links</a>
+    <a href="about-us.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <div class="content">
+    <img src="logo.png" alt="Humanicism Logo" style="width:180px;height:auto;border-radius:50%;border:3px solid #00e6ff;">
+    <h1>Contact Us</h1>
+    <form id="contact-form">
+      <label>Your Name:</label>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <label>Your Email:</label>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <label>Message:</label>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="status"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init('XOBqjVCEBe63jhrnS');
+
+    const form = document.getElementById('contact-form');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const templateParams = {
+        from_name: form.name.value,
+        from_email: form.email.value,
+        message: form.message.value
+      };
+
+      emailjs.send('service_t41dfh1', 'template_ut9e3pv', templateParams)
+        .then(() => {
+          statusDiv.innerHTML = '<p style="color:#00ffb0;">Message sent successfully!</p>';
+          form.reset();
+        }, (err) => {
+          statusDiv.innerHTML = '<p style="color:#ff5555;">Error sending message: '+err.text+'</p>';
+        });
+    });
+  </script>
+</body>
+</html>

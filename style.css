@@ -1,0 +1,186 @@
+/* Smooth animated gradient background */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #001a66, #0044cc, #00e6ff, #002b80);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: white;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: rgba(0,0,40,0.8);
+  backdrop-filter: blur(8px);
+  padding-top: 40px;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar a {
+  display: block;
+  color: #00e6ff;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: #00e6ff;
+  color: #001a66;
+}
+
+/* Main content area */
+.content {
+  margin-left: 220px;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Links */
+.content a {
+  display: block;
+  color: #00e6ff;
+  margin: 10px 0;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* Futuristic buttons for links */
+.link-button {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #00e6ff;
+  color: #001a66;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 230, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.link-button:hover {
+  background: #001a66;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(0, 230, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* Contact Form */
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 40, 0.6);
+  box-shadow: 0 0 20px rgba(0, 230, 255, 0.5);
+}
+
+form input, form textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #00e6ff;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #ffffff;
+}
+
+form button {
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  background: #00e6ff;
+  color: #001a66;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: #001a66;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 230, 255, 0.9);
+}
+
+/* About Us specific styling */
+.content h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #00e6ff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.content p {
+  line-height: 1.8;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; /* All text centered */
+}
+
+.content strong {
+  color: #00ffb0;
+}
+
+.content ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.content ul li {
+  margin-bottom: 15px;
+}
+
+.content ul li::before {
+  content: '•';
+  color: #00e6ff;
+  margin-right: 8px;
+}
