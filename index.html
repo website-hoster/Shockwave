@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shockwave - Official Website</title>
+  <title>Shockwave - Home</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
+  <button class="menu-toggle">☰</button>
   <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
@@ -16,10 +16,20 @@
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Shockwave Logo" 
-         style="width:240px; height:auto; border-radius:50%; border:3px solid #ff3300;">
+    <img src="logo.png" alt="Shockwave Logo" style="width:200px;height:auto;border-radius:50%;border:3px solid #ff3300;">
     <h1>Shockwave Official Site</h1>
-    <p>This is the Shockwave website. Check out the website!</p>
+    <p>This is the Shockwave website. Check out the links and pages below!</p>
+    <a href="links.html" class="link-button">Explore Links</a>
+    <a href="about-us.html" class="link-button">Meet the Band</a>
+    <a href="contact.html" class="link-button">Contact Us</a>
   </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
