@@ -17,7 +17,7 @@ body {
   100% {background-position: 0% 50%;}
 }
 
-/* Sidebar (default desktop) */
+/* Sidebar */
 .sidebar {
   width: 220px;
   background: rgba(20,0,0,0.85);
