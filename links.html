@@ -7,7 +7,8 @@
   <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
-   <div class="sidebar">
+  <button class="menu-toggle">☰</button>
+  <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
     <a href="about-us.html">About Us</a>
@@ -15,15 +16,20 @@
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Shockwave Logo" 
-         style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
-    <h1>Check out Shockwave socials</h1>
-
-    <a class="link-button" href="https://youtube.com/" target="_blank">YouTube</a>
-    <a class="link-button" href="https://tiktok.com/" target="_blank">TikTok</a>
-    <a class="link-button" href="https://instagram.com/" target="_blank">Instagram</a>
-    <a class="link-button" href="https://facebook.com/" target="_blank">Facebook</a>
-    <a class="link-button" href="https://x.com/" target="_blank">X (Twitter)</a>
+    <img src="logo.png" alt="Shockwave Logo" style="width:200px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <h1>Links</h1>
+    <a href="#" class="link-button">Spotify</a>
+    <a href="#" class="link-button">YouTube</a>
+    <a href="#" class="link-button">Instagram</a>
+    <a href="#" class="link-button">Twitter</a>
   </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
