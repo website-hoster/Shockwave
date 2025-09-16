@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
-    /* Form Styling */
+    /* Contact Form Styling */
     #contact-form {
       max-width: 400px;
       margin: 0 auto;
@@ -63,27 +63,13 @@
       font-size: 1em;
       text-align: center;
     }
-
-    @media (max-width: 768px) {
-      .content {
-        margin-left: 0;
-        padding: 20px;
-      }
-      .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 10px 0;
-      }
-      .sidebar a {
-        padding: 10px 15px;
-      }
-    }
   </style>
 </head>
 <body>
+  <!-- Mobile toggle -->
+  <button class="menu-toggle">☰</button>
+
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
@@ -91,11 +77,12 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
+  <!-- Content -->
   <div class="content">
     <img src="logo.png" alt="Shockwave Logo" 
          style="width:220px; height:auto; border-radius:50%; border:3px solid #ff3300;">
     <h1>Contact Shockwave</h1>
-    <p>Need to contact us? Reach out to us using the form below!</p>
+    <p>Need to contact us? Reach out using the form below!</p>
 
     <form id="contact-form">
       <label>Your Name:</label>
@@ -109,18 +96,29 @@
 
       <button type="submit">Send Message</button>
     </form>
+
     <div id="status"></div>
   </div>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    emailjs.init('XOBqjVCEBe63jhrnS');
+    // Sidebar toggle
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // EmailJS init
+    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your public key
 
     const form = document.getElementById('contact-form');
     const statusDiv = document.getElementById('status');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+
       const templateParams = {
         from_name: form.name.value,
         from_email: form.email.value,
@@ -129,10 +127,10 @@
 
       emailjs.send('service_t41dfh1', 'template_ut9e3pv', templateParams)
         .then(() => {
-          statusDiv.innerHTML = '<p style="color:#00ffb0;">Message sent successfully!</p>';
+          statusDiv.innerHTML = '<p style="color:#00ffb0;">✅ Message sent successfully!</p>';
           form.reset();
         }, (err) => {
-          statusDiv.innerHTML = '<p style="color:#ff5555;">Error sending message: '+err.text+'</p>';
+          statusDiv.innerHTML = '<p style="color:#ff5555;">❌ Error sending: '+err.text+'</p>';
         });
     });
   </script>
