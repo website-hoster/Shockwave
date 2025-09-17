@@ -6,6 +6,28 @@
   <title>Shockwave - Home</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    .link-button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 25px;
+      background: rgba(20, 0, 0, 0.75);
+      border: 2px solid #ff3300;
+      border-radius: 15px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .link-button:hover {
+      background: #ff3300;
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
+    }
+  </style>
 </head>
 <body>
   <!-- Sidebar toggle button -->
@@ -26,14 +48,14 @@
          style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300; margin-bottom:20px;">
     
     <h1>Shockwave Official Site</h1>
-    <p>This is the Shockwave website. Check out the links and pages below!</p>
+    <p>This is the Official Shockwave website. Check out the links and pages below!</p>
 
-    <!-- Modern button layout -->
-    <div class="button-container">
-      <a href="links.html" class="modern-button">Explore Links</a>
-      <a href="about-us.html" class="modern-button">Meet the Band</a>
-      <a href="gigs.html" class="modern-button">Upcoming Gigs</a>
-      <a href="contact.html" class="modern-button">Contact Us</a>
+    <!-- Buttons -->
+    <div>
+      <a href="links.html" class="link-button">Explore Links</a>
+      <a href="about-us.html" class="link-button">Meet the Band</a>
+      <a href="gigs.html" class="link-button">Upcoming Gigs</a>
+      <a href="contact.html" class="link-button">Contact Us</a>
     </div>
   </div>
 
