@@ -2,33 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shockwave - Contact Us</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
-    .page-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .page-header img {
-      width: 220px;
-      height: auto;
-      border-radius: 50%;
-      border: 3px solid #ff3300;
-      margin-bottom: 20px;
-    }
-    .page-header h1 {
-      font-size: 2.2em;
-      margin: 10px 0;
-      color: #fff;
-    }
-    .page-header p {
-      font-size: 1.1em;
-      margin: 0;
-      color: rgba(255,255,255,0.85);
-    }
-
     .contact-card {
       max-width: 500px;
       margin: 30px auto;
@@ -55,10 +32,6 @@
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
       box-sizing: border-box;
-    }
-    #contact-form input::placeholder,
-    #contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.7);
     }
     #contact-form button {
       width: 100%;
@@ -96,11 +69,9 @@
   </div>
 
   <div class="content">
-    <div class="page-header">
-      <img src="logo.png" alt="Shockwave Logo">
-      <h1>Contact Shockwave</h1>
-      <p>Need to contact us? Reach out using the form below!</p>
-    </div>
+    <img src="logo.png" alt="Shockwave Logo" style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <h1>Contact Shockwave</h1>
+    <p>Need to contact us? Reach out using the form below!</p>
 
     <div class="contact-card">
       <form id="contact-form">
@@ -127,7 +98,7 @@
       sidebar.classList.toggle('active');
     });
 
-    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your EmailJS public key
+    emailjs.init('XOBqjVCEBe63jhrnS');
 
     const form = document.getElementById('contact-form');
     const statusDiv = document.getElementById('status');
