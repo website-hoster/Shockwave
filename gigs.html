@@ -10,20 +10,19 @@
     /* Gig cards layout */
     .gigs-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* wider cards */
+      gap: 30px;
       margin: 30px auto;
-      max-width: 1100px;
+      max-width: 1200px; /* allow more width */
     }
     .gig-card {
       background: rgba(20,0,0,0.75);
       border: 2px solid #ff3300;
       border-radius: 20px;
-      padding: 30px 25px;
+      padding: 25px 30px;
       color: #fff;
       box-shadow: 0 0 15px rgba(255,51,0,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      min-height: 200px; /* taller boxes */
     }
     .gig-card:hover {
       transform: translateY(-5px);
@@ -32,12 +31,12 @@
     .gig-card h3 {
       margin-top: 0;
       color: #ff3300;
-      font-size: 1.6em; /* bigger title */
+      font-size: 1.6em;
       margin-bottom: 15px;
     }
     .gig-detail {
       margin: 10px 0;
-      font-size: 1.2em; /* bigger text */
+      font-size: 1.2em;
     }
     .gig-detail strong {
       color: #ff3300;
@@ -45,15 +44,11 @@
 
     /* Mobile optimization */
     @media (max-width: 600px) {
+      .gigs-container {
+        grid-template-columns: 1fr; /* stack on small screens */
+      }
       .gig-card {
         padding: 20px;
-        font-size: 1em;
-      }
-      .gig-card h3 {
-        font-size: 1.4em;
-      }
-      .gig-detail {
-        font-size: 1.1em;
       }
     }
   </style>
@@ -79,19 +74,12 @@
 
     <div class="gigs-container">
       <div class="gig-card">
-        <h3>The Rock Arena</h3>
-        <p class="gig-detail"><strong>Date:</strong> No info</p>
-        <p class="gig-detail"><strong>Time:</strong> No info</p>
-        <p class="gig-detail"><strong>Location:</strong> No info</p>
+        <h3>No Info</h3>
+        <p class="gig-detail"><strong>Date:</strong> No Info</p>
+        <p class="gig-detail"><strong>Time:</strong> No Info</p>
+        <p class="gig-detail"><strong>Location:</strong> No Info</p>
       </div>
 
-      <div class="gig-card">
-        <h3>Downtown Club</h3>
-        <p class="gig-detail"><strong>Date:</strong> No info</p>
-        <p class="gig-detail"><strong>Time:</strong> No info</p>
-        <p class="gig-detail"><strong>Location:</strong> No info</p>
-      </div>
-    </div>
 
     <p style="margin-top:20px; color:#ff3300;"><em>More dates coming soon!</em></p>
   </div>
