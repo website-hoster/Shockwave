@@ -2,20 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shockwave - Home</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    .link-button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 25px;
+      background: rgba(20, 0, 0, 0.75);
+      border: 2px solid #ff3300;
+      border-radius: 15px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .link-button:hover {
+      background: #ff3300;
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
+    }
+  </style>
 </head>
 <body>
   <button class="menu-toggle">☰</button>
   <div class="sidebar">
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="links.html">Links</a>
     <a href="about-us.html">Band Members</a>
     <a href="gigs.html">Upcoming Gigs</a>
     <a href="contact.html">Contact Us</a>
   </div>
-
 
   <div class="content">
     <img src="logo.png" alt="Shockwave Logo" style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
