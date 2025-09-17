@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shockwave - Upcoming Gigs</title>
+  <title>Shockwave - Contact Us</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
@@ -29,44 +29,59 @@
       color: rgba(255,255,255,0.85);
     }
 
-    .gigs-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 30px;
+    .contact-card {
+      max-width: 500px;
       margin: 30px auto;
-      max-width: 1200px;
-    }
-    .gig-card {
-      background: rgba(20,0,0,0.75);
+      padding: 30px;
+      background: rgba(20, 0, 0, 0.85);
       border: 2px solid #ff3300;
       border-radius: 20px;
-      padding: 25px 30px;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(255,51,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.6);
     }
-    .gig-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(255,51,0,0.8);
-    }
-    .gig-card h3 {
-      margin-top: 0;
+    #contact-form label {
+      display: block;
+      margin-bottom: 8px;
       color: #ff3300;
-      font-size: 1.6em;
+      font-weight: bold;
+    }
+    #contact-form input,
+    #contact-form textarea {
+      width: 100%;
+      padding: 12px;
       margin-bottom: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      box-sizing: border-box;
     }
-    .gig-detail {
-      margin: 10px 0;
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    #contact-form button {
+      width: 100%;
+      padding: 15px;
+      background-color: #ff3300;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
       font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.6);
+      transition: all 0.3s ease;
     }
-    .gig-detail strong {
-      color: #ff3300;
+    #contact-form button:hover {
+      background-color: #660000;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.9);
     }
-
-    @media (max-width: 600px) {
-      .gigs-container {
-        grid-template-columns: 1fr;
-      }
+    #status {
+      margin-top: 15px;
+      font-size: 1em;
+      text-align: center;
     }
   </style>
 </head>
@@ -76,32 +91,61 @@
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
     <a href="about-us.html">Band Members</a>
-    <a href="gigs.html" class="active">Upcoming Gigs</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="gigs.html">Upcoming Gigs</a>
+    <a href="contact.html" class="active">Contact Us</a>
   </div>
 
   <div class="content">
     <div class="page-header">
       <img src="logo.png" alt="Shockwave Logo">
-      <h1>Upcoming Gigs</h1>
-      <p>Catch Shockwave live at the following events:</p>
+      <h1>Contact Shockwave</h1>
+      <p>Need to contact us? Reach out using the form below!</p>
     </div>
 
-    <div class="gigs-container">
-      <div class="gig-card">
-        <h3>Fermain Tavern</h3>
-        <p class="gig-detail"><strong>Date:</strong> Saturday 20th</p>
-        <p class="gig-detail"><strong>Time:</strong> Arrive 7:15, Band On at 7:30</p>
-        <p class="gig-detail"><strong>Location:</strong> The Fermain Tavern</p>
-      </div>
+    <div class="contact-card">
+      <form id="contact-form">
+        <label>Your Name:</label>
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <label>Your Email:</label>
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <label>Message:</label>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="status"></div>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     const toggleBtn = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.sidebar');
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
+    });
+
+    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your EmailJS public key
+
+    const form = document.getElementById('contact-form');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const templateParams = {
+        from_name: form.name.value,
+        from_email: form.email.value,
+        message: form.message.value
+      };
+      emailjs.send('service_t41dfh1', 'template_ut9e3pv', templateParams)
+        .then(() => {
+          statusDiv.innerHTML = '<p style="color:#00ffb0;">✅ Message sent successfully!</p>';
+          form.reset();
+        }, (err) => {
+          statusDiv.innerHTML = '<p style="color:#ff5555;">❌ Error sending: '+err.text+'</p>';
+        });
     });
   </script>
 </body>
