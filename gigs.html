@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shockwave - Band Members</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+  <button class="menu-toggle">☰</button>
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="links.html">Links</a>
+    <a href="about-us.html">Band Members</a>
+    <a href="contact.html">Upcoming Gigs</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
 
+  <div class="content">
+    <img src="logo.png" alt="Shockwave Logo" style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <h1>Shockwave</h1>
+    <h2>Band Members</h2>
+    <ul style="list-style:none;padding:0;">
+      <h2><strong>Max</strong> – Vocals</li>    
+      <h2><strong>Evan</strong> – Bass</li>      
+      <h2><strong>Tor</strong> – Guitar</li>
+      <h2><strong>Oliver</strong> – Guitar</li>
+      <h2><strong>Claudia</strong> – Drums</li>
+    </ul>
+  </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
