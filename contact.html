@@ -7,27 +7,27 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
-    /* Floating card container */
+    /* Contact Card */
     .contact-card {
       max-width: 500px;
-      margin: 40px auto;
+      margin: 30px auto;
       padding: 30px;
-      background: rgba(20, 0, 0, 0.75);
+      background: rgba(20, 0, 0, 0.85);
       border: 2px solid #ff3300;
       border-radius: 20px;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.6);
     }
 
-    /* Contact Form Styling */
+    .contact-card h1, 
+    .contact-card p {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Form */
     #contact-form label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       color: #ff3300;
       font-weight: bold;
     }
@@ -42,6 +42,7 @@
       font-size: 1em;
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
+      box-sizing: border-box;
     }
 
     #contact-form input::placeholder,
@@ -92,11 +93,12 @@
   <!-- Content -->
   <div class="content">
     <img src="logo.png" alt="Shockwave Logo" 
-         style="width:220px; height:auto; border-radius:50%; border:3px solid #ff3300;">
-    <h1>Contact Shockwave</h1>
-    <p>Need to contact us? Reach out using the form below!</p>
+         style="width:220px; height:auto; border-radius:50%; border:3px solid #ff3300; margin-bottom:20px;">
 
     <div class="contact-card">
+      <h1>Contact Shockwave</h1>
+      <p>Need to contact us? Reach out using the form below!</p>
+
       <form id="contact-form">
         <label>Your Name:</label>
         <input type="text" name="name" placeholder="Your Name" required>
@@ -125,7 +127,7 @@
     });
 
     // EmailJS init
-    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your public key
+    emailjs.init('XOBqjVCEBe63jhrnS'); // Replace with your EmailJS public key
 
     const form = document.getElementById('contact-form');
     const statusDiv = document.getElementById('status');
