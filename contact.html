@@ -7,13 +7,24 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
-    /* Contact Form Styling */
-    #contact-form {
-      max-width: 400px;
-      margin: 0 auto;
-      text-align: left;
+    /* Floating card container */
+    .contact-card {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(20, 0, 0, 0.75);
+      border: 2px solid #ff3300;
+      border-radius: 20px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
     }
 
+    /* Contact Form Styling */
     #contact-form label {
       display: block;
       margin-bottom: 5px;
@@ -70,15 +81,13 @@
   <button class="menu-toggle">☰</button>
 
   <!-- Sidebar -->
-  <button class="menu-toggle">☰</button>
   <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
     <a href="about-us.html">Band Members</a>
     <a href="gigs.html">Upcoming Gigs</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="contact.html" class="active">Contact Us</a>
   </div>
-
 
   <!-- Content -->
   <div class="content">
@@ -87,20 +96,22 @@
     <h1>Contact Shockwave</h1>
     <p>Need to contact us? Reach out using the form below!</p>
 
-    <form id="contact-form">
-      <label>Your Name:</label>
-      <input type="text" name="name" placeholder="Your Name" required>
+    <div class="contact-card">
+      <form id="contact-form">
+        <label>Your Name:</label>
+        <input type="text" name="name" placeholder="Your Name" required>
 
-      <label>Your Email:</label>
-      <input type="email" name="email" placeholder="Your Email" required>
+        <label>Your Email:</label>
+        <input type="email" name="email" placeholder="Your Email" required>
 
-      <label>Message:</label>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <label>Message:</label>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 
-      <button type="submit">Send Message</button>
-    </form>
+        <button type="submit">Send Message</button>
+      </form>
 
-    <div id="status"></div>
+      <div id="status"></div>
+    </div>
   </div>
 
   <!-- Scripts -->
