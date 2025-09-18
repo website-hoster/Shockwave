@@ -9,15 +9,15 @@
   <style>
     .members-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin: 20px auto;
-      max-width: 95%;
+      margin: 30px auto;
+      max-width: 1000px;
     }
     .member-card {
       background: rgba(20,0,0,0.75);
       border: 2px solid #ff3300;
-      border-radius: 15px;
+      border-radius: 20px;
       padding: 20px;
       text-align: center;
       color: #fff;
@@ -25,38 +25,19 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .member-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: 0 0 25px rgba(255,51,0,0.8);
     }
     .member-card img {
       width: 100%;
-      max-width: 240px;
+      max-width: 260px;
       height: auto;
-      border-radius: 12px;
-      border: 3px solid #ff3300;
+      border-radius: 15px;
+      border: 4px solid #ff3300;
       margin-bottom: 15px;
       object-fit: cover;
     }
-    .member-card h3 {
-      margin: 10px 0 6px;
-      color: #ff3300;
-      font-size: 1.3em;
-    }
-    .member-card p {
-      margin: 0;
-      font-size: 1em;
-    }
-    img.logo {
-      width: 55%;
-      max-width: 220px;
-      border-radius: 50%;
-      border: 3px solid #ff3300;
-      margin-bottom: 15px;
-    }
-    .content {
-      text-align: center;
-      padding: 15px;
-    }
+    .member-card h3 { margin: 10px 0; color: #ff3300; }
   </style>
 </head>
 <body>
@@ -70,35 +51,31 @@
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Shockwave Logo" class="logo">
+    <img src="logo.png" alt="Shockwave Logo"
+      style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
     <h1>Shockwave</h1>
     <h2>Meet the Band</h2>
 
     <div class="members-grid">
       <div class="member-card">
         <img src="image1.jpg" alt="Max - Vocals">
-        <h3>Max</h3>
-        <p>Vocals</p>
+        <h3>Max</h3><p>Vocals</p>
       </div>
       <div class="member-card">
         <img src="image2.jpg" alt="Evan - Bass">
-        <h3>Evan</h3>
-        <p>Bass</p>
+        <h3>Evan</h3><p>Bass</p>
       </div>
       <div class="member-card">
         <img src="image3.jpg" alt="Tor - Guitar">
-        <h3>Tor</h3>
-        <p>Guitar</p>
+        <h3>Tor</h3><p>Guitar</p>
       </div>
       <div class="member-card">
         <img src="image4.jpg" alt="Oliver - Guitar">
-        <h3>Oliver</h3>
-        <p>Guitar</p>
+        <h3>Oliver</h3><p>Guitar</p>
       </div>
       <div class="member-card">
         <img src="image5.jpg" alt="Claudia - Drums">
-        <h3>Claudia</h3>
-        <p>Drums</p>
+        <h3>Claudia</h3><p>Drums</p>
       </div>
     </div>
   </div>
