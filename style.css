@@ -111,6 +111,7 @@ body {
   z-index: 1100;
 }
 
+/* ---------- MOBILE FIXES ---------- */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -124,5 +125,43 @@ body {
   }
   .menu-toggle {
     display: block;
+  }
+
+  /* ✅ Scale down logo & headings */
+  .content img {
+    width: 160px;
+  }
+  .content h1 {
+    font-size: 2em;
+  }
+
+  /* ✅ Stack buttons with equal spacing */
+  .link-button {
+    max-width: 90%;
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 1.1em;
+  }
+
+  /* ✅ Gigs and Members grid fix */
+  .gigs-container,
+  .members-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .gig-card,
+  .member-card,
+  .contact-card {
+    width: 90%;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  /* ✅ Contact form inputs scale */
+  #contact-form input,
+  #contact-form textarea,
+  #contact-form button {
+    font-size: 1em;
   }
 }
