@@ -2,42 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shockwave - Upcoming Gigs</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     .gigs-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 30px;
-      margin: 30px auto;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 95%;
     }
     .gig-card {
       background: rgba(20,0,0,0.75);
       border: 2px solid #ff3300;
-      border-radius: 20px;
-      padding: 25px 30px;
+      border-radius: 15px;
+      padding: 20px;
       color: #fff;
       box-shadow: 0 0 15px rgba(255,51,0,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .gig-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(255,51,0,0.8);
+      box-shadow: 0 0 25px rgba(255,51,0,0.8);
     }
     .gig-card h3 {
-      margin-top: 0;
+      margin: 0 0 10px;
       color: #ff3300;
-      font-size: 1.6em;
-      margin-bottom: 15px;
+      font-size: 1.4em;
     }
     .gig-detail {
-      margin: 10px 0;
-      font-size: 1.2em;
+      margin: 8px 0;
+      font-size: 1em;
     }
     .gig-detail strong {
       color: #ff3300;
+    }
+    img.logo {
+      width: 55%;
+      max-width: 220px;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid #ff3300;
+      margin-bottom: 15px;
+    }
+    .content {
+      text-align: center;
+      padding: 15px;
     }
   </style>
 </head>
@@ -47,20 +59,20 @@
     <a href="index.html">Home</a>
     <a href="links.html">Links</a>
     <a href="about-us.html">Band Members</a>
-    <a href="gigs.html">Upcoming Gigs</a>
+    <a href="gigs.html" class="active">Upcoming Gigs</a>
     <a href="contact.html">Contact Us</a>
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Shockwave Logo" style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <img src="logo.png" alt="Shockwave Logo" class="logo">
     <h1>Upcoming Gigs</h1>
     <p>Catch Shockwave live at the following events:</p>
 
     <div class="gigs-container">
       <div class="gig-card">
         <h3>Fermain Tavern</h3>
-        <p class="gig-detail"><strong>Date:</strong> Saterday 20th</p>
-        <p class="gig-detail"><strong>Time:</strong> Arrive 7:15 Band On at 7:30</p>
+        <p class="gig-detail"><strong>Date:</strong> Saturday 20th</p>
+        <p class="gig-detail"><strong>Time:</strong> Arrive 7:15, Band On at 7:30</p>
         <p class="gig-detail"><strong>Location:</strong> The Fermain Tavern</p>
       </div>
     </div>
