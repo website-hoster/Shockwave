@@ -6,6 +6,70 @@
   <title>Shockwave - Links</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    /* Buttons */
+    .link-button {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #ff3300;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 25px;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .link-button:hover {
+      background: #660000;
+      color: #ffffff;
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.9);
+      transform: scale(1.05);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .link-button {
+        max-width: 95%;
+        padding: 18px;
+        margin: 20px auto;
+        font-size: 1.1em;
+      }
+
+      .content img {
+        width: 160px;
+      }
+
+      .content h1 {
+        font-size: 2em;
+      }
+    }
+
+    /* Center content */
+    .content {
+      text-align: center;
+    }
+
+    .content img {
+      width: 220px;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid #ff3300;
+      margin-bottom: 20px;
+    }
+
+    .content h1 {
+      color: #ff3300;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+  </style>
 </head>
 <body>
   <button class="menu-toggle">☰</button>
@@ -18,16 +82,12 @@
   </div>
 
   <div class="content">
-    <img src="logo.png" alt="Shockwave Logo"
-      style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;">
+    <img src="logo.png" alt="Shockwave Logo">
     <h1>Check out Shockwave Socials</h1>
-
-    <div class="button-container">
-      <a href="https://youtube.com/" target="_blank" class="link-button">YouTube</a>
-      <a href="https://www.tiktok.com/@shockwave0234" target="_blank" class="link-button">TikTok</a>
-      <a href="https://instagram.com/" target="_blank" class="link-button">Instagram</a>
-      <a href="https://facebook.com/" target="_blank" class="link-button">Facebook</a>
-    </div>
+    <a class="link-button" href="https://youtube.com/" target="_blank">YouTube</a>
+    <a class="link-button" href="https://www.tiktok.com/@shockwave0234" target="_blank">TikTok</a>
+    <a class="link-button" href="https://instagram.com/" target="_blank">Instagram</a>
+    <a class="link-button" href="https://facebook.com/" target="_blank">Facebook</a>
   </div>
 
   <script>
