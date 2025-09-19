@@ -20,6 +20,7 @@
       border-radius: 15px;
       border: 2px solid #ff3300;
       box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .gallery-item img {
@@ -36,7 +37,41 @@
       transform: scale(1.1);
     }
 
-    /* Mobile scaling */
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      border: 3px solid #ff3300;
+      box-shadow: 0 0 30px rgba(255, 51, 0, 0.8);
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .lightbox .close:hover {
+      color: #ff3300;
+    }
+
+    /* Mobile layout */
     @media (max-width: 768px) {
       .gallery-container {
         grid-template-columns: 1fr;
@@ -70,23 +105,19 @@
     <h1>Shockwave Gallery</h1>
 
     <div class="gallery-container">
-      <!-- Replace these with your images -->
+      <!-- Replace these with your own images -->
       <div class="gallery-item"><img src="image1.jpg" alt="Gallery Image 1"></div>
       <div class="gallery-item"><img src="image2.jpg" alt="Gallery Image 2"></div>
       <div class="gallery-item"><img src="image3.jpg" alt="Gallery Image 3"></div>
       <div class="gallery-item"><img src="image4.jpg" alt="Gallery Image 4"></div>
       <div class="gallery-item"><img src="image5.jpg" alt="Gallery Image 5"></div>
-      <div class="gallery-item"><img src="image1.jpg" alt="Gallery Image 6"></div>
-      <div class="gallery-item"><img src="image2.jpg" alt="Gallery Image 7"></div>
-      <div class="gallery-item"><img src="image3.jpg" alt="Gallery Image 8"></div>
-      <div class="gallery-item"><img src="image4.jpg" alt="Gallery Image 9"></div>
-      <div class="gallery-item"><img src="image5.jpg" alt="Gallery Image 10"></div>
-      <div class="gallery-item"><img src="image1.jpg" alt="Gallery Image 11"></div>
-      <div class="gallery-item"><img src="image2.jpg" alt="Gallery Image 12"></div>
-      <div class="gallery-item"><img src="image3.jpg" alt="Gallery Image 13"></div>
-      <div class="gallery-item"><img src="image4.jpg" alt="Gallery Image 14"></div>
-      <div class="gallery-item"><img src="image5.jpg" alt="Gallery Image 15"></div>
     </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded view">
   </div>
 
   <script>
@@ -94,6 +125,31 @@
     const sidebar = document.querySelector('.sidebar');
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox .close');
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+      }
     });
   </script>
 </body>
