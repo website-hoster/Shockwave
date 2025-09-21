@@ -38,13 +38,6 @@
       font-size: 1.1em;
     }
     .gig-detail strong { color: #ff3300; }
-    /* Sidebar toggle */
-    .sidebar { 
-      /* your existing sidebar styles */ 
-    }
-    .sidebar.active { 
-      /* your active styles */ 
-    }
   </style>
 </head>
 <body>
@@ -69,7 +62,7 @@
         <h3>Fermain Tavern</h3>
         <p class="gig-detail"><strong>Date:</strong> <span class="gig-date">Saturday 20th</span></p>
         <p class="gig-detail"><strong>Time:</strong> <span class="gig-time">Arrive 7:15 · Band On 7:30</span></p>
-        <p class="gig-detail"><strong>Location:</strong> The Fermain Tavern</p>
+        <p class="gig-detail"><strong>Location:</strong> <span class="gig-location">The Fermain Tavern</span></p>
       </div>
       <!-- Add more gigs here with their own data-date attribute -->
     </div>
@@ -93,6 +86,7 @@
         if (now > gigDateTime) {
           gig.querySelector('.gig-date').textContent = 'No info';
           gig.querySelector('.gig-time').textContent = 'No info';
+          gig.querySelector('.gig-location').textContent = 'No info';
         }
       });
     }
@@ -100,7 +94,7 @@
     // Initial check
     updateGigs();
 
-    // Optional: automatically update every minute in case the page stays open
+    // Automatically update every minute in case the page stays open
     setInterval(updateGigs, 60000);
   </script>
 </body>
