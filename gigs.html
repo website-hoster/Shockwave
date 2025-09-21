@@ -9,7 +9,7 @@
   <style>
     .gigs-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 25px;
       margin-top: 30px;
     }
@@ -19,7 +19,7 @@
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(255, 51, 0, 0.5);
       padding: 20px;
-      text-align: left;
+      text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .gig-card:hover {
@@ -35,17 +35,21 @@
       margin: 8px 0;
       color: #ddd;
     }
-    .gig-card strong {
-      color: #ff3300;
-    }
 
+    /* Responsive tweaks */
+    @media (max-width: 1024px) {
+      .gigs-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
     @media (max-width: 768px) {
       .gigs-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
       }
-      .gig-card {
-        padding: 15px;
+    }
+    @media (max-width: 500px) {
+      .gigs-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -67,25 +71,28 @@
     <h1>Upcoming Gigs</h1>
 
     <div class="gigs-container">
-      <!-- Example gig cards -->
+      <!-- Example gig cards with title as location -->
       <div class="gig-card">
-        <h2>Gig 1</h2>
+        <h2>No info</h2>
         <p><strong>Date:</strong> TBA</p>
-        <p><strong>Location:</strong> No info</p>
         <p><strong>Description:</strong> Details coming soon...</p>
       </div>
 
       <div class="gig-card">
-        <h2>Gig 2</h2>
+        <h2>No info</h2>
         <p><strong>Date:</strong> TBA</p>
-        <p><strong>Location:</strong> No info</p>
         <p><strong>Description:</strong> Details coming soon...</p>
       </div>
 
       <div class="gig-card">
-        <h2>Gig 3</h2>
+        <h2>No info</h2>
         <p><strong>Date:</strong> TBA</p>
-        <p><strong>Location:</strong> No info</p>
+        <p><strong>Description:</strong> Details coming soon...</p>
+      </div>
+
+      <div class="gig-card">
+        <h2>No info</h2>
+        <p><strong>Date:</strong> TBA</p>
         <p><strong>Description:</strong> Details coming soon...</p>
       </div>
     </div>
