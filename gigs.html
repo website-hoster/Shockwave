@@ -38,6 +38,13 @@
       font-size: 1.1em;
     }
     .gig-detail strong { color: #ff3300; }
+    /* Sidebar toggle */
+    .sidebar { 
+      /* your existing sidebar styles */ 
+    }
+    .sidebar.active { 
+      /* your active styles */ 
+    }
   </style>
 </head>
 <body>
@@ -58,21 +65,43 @@
     <p>Catch Shockwave live at the following events:</p>
 
     <div class="gigs-container">
-      <div class="gig-card">
+      <div class="gig-card" data-date="2025-09-20T19:30">
         <h3>Fermain Tavern</h3>
-        <p class="gig-detail"><strong>Date:</strong> Saturday 20th</p>
-        <p class="gig-detail"><strong>Time:</strong> Arrive 7:15 · Band On 7:30</p>
+        <p class="gig-detail"><strong>Date:</strong> <span class="gig-date">Saturday 20th</span></p>
+        <p class="gig-detail"><strong>Time:</strong> <span class="gig-time">Arrive 7:15 · Band On 7:30</span></p>
         <p class="gig-detail"><strong>Location:</strong> The Fermain Tavern</p>
       </div>
+      <!-- Add more gigs here with their own data-date attribute -->
     </div>
   </div>
 
   <script>
+    // Sidebar toggle
     const toggleBtn = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.sidebar');
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
+
+    // Check gig dates and update past gigs
+    function updateGigs() {
+      const gigs = document.querySelectorAll('.gig-card');
+      const now = new Date();
+
+      gigs.forEach(gig => {
+        const gigDateTime = new Date(gig.dataset.date);
+        if (now > gigDateTime) {
+          gig.querySelector('.gig-date').textContent = 'No info';
+          gig.querySelector('.gig-time').textContent = 'No info';
+        }
+      });
+    }
+
+    // Initial check
+    updateGigs();
+
+    // Optional: automatically update every minute in case the page stays open
+    setInterval(updateGigs, 60000);
   </script>
 </body>
 </html>
