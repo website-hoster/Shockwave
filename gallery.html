@@ -9,7 +9,7 @@
     /* Gallery grid */
     .gallery-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr); /* default 3 per row */
       gap: 20px;
       padding: 20px;
     }
@@ -29,12 +29,12 @@
       height: auto;
       display: block;
       border-radius: 10px;
-      object-fit: contain; /* keep aspect ratio */
-      max-height: 300px;   /* keeps things even */
+      object-fit: contain;
+      max-height: 300px;
       margin: 0 auto;
     }
 
-    /* Portrait images → shrink so they don’t dominate */
+    /* Portrait images shrink slightly */
     .gallery-item img.portrait {
       max-height: 250px;
     }
@@ -73,7 +73,14 @@
       font-weight: bold;
     }
 
-    /* ✅ Mobile layout: 1 per row */
+    /* ✅ Tablet: 2 per row */
+    @media (max-width: 1023px) {
+      .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ✅ Mobile: 1 per row */
     @media (max-width: 768px) {
       .gallery-container {
         grid-template-columns: 1fr;
@@ -108,6 +115,8 @@
       <div class="gallery-item"><img src="gallery6.png" alt="Gallery 6"></div>
       <div class="gallery-item"><img src="gallery7.png" alt="Gallery 7"></div>
       <div class="gallery-item"><img src="gallery8.png" alt="Gallery 8"></div>
+      <div class="gallery-item"><img src="gallery9.png" alt="Gallery 9"></div>
+      <div class="gallery-item"><img src="gallery10.png" alt="Gallery 10"></div>
     </div>
   </div>
 
@@ -136,7 +145,7 @@
         lightboxImg.src = img.src;
       });
 
-      // Detect portrait images
+      // Mark portrait images
       img.onload = () => {
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add("portrait");
