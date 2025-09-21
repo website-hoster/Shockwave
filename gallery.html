@@ -3,163 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery</title>
+  <title>Shockwave - Gallery</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <style>
     /* Gallery grid */
     .gallery-container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* default 3 per row */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 20px;
+      margin-top: 30px;
     }
-
     .gallery-item {
-      border-radius: 12px;
-      border: 2px solid #ff3300;
-      box-shadow: 0 0 12px rgba(255, 51, 0, 0.4);
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
       overflow: hidden;
-      background: #000;
+      border-radius: 15px;
+      border: 2px solid #ff3300;
+      box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .gallery-item img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 10px;
-      object-fit: contain;
-      max-height: 300px;
-      margin: 0 auto;
+      transition: transform 0.4s ease;
     }
-
-    /* Portrait images shrink slightly */
-    .gallery-item img.portrait {
-      max-height: 250px;
-    }
-
     .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 51, 0, 0.8);
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
 
-    /* Lightbox overlay */
+    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 2000;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
     }
-
     .lightbox img {
       max-width: 90%;
-      max-height: 85%;
+      max-height: 80%;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,51,0,0.9);
+      border: 3px solid #ff3300;
+      box-shadow: 0 0 30px rgba(255, 51, 0, 0.8);
     }
-
     .lightbox .close {
       position: absolute;
       top: 20px;
-      right: 40px;
-      font-size: 3em;
-      color: #ff3300;
-      cursor: pointer;
+      right: 30px;
+      font-size: 40px;
       font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .lightbox .close:hover {
+      color: #ff3300;
     }
 
-    /* ✅ Tablet: 2 per row */
-    @media (max-width: 1023px) {
+    /* Mobile layout */
+    @media (max-width: 1024px) {
       .gallery-container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    /* ✅ Mobile: 1 per row */
     @media (max-width: 768px) {
       .gallery-container {
         grid-template-columns: 1fr;
         gap: 15px;
       }
-      .gallery-item img {
-        max-height: 350px;
-      }
+    }
+
+    /* Headings */
+    .content h1 {
+      color: #ff3300;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+      font-size: 2.5em;
     }
   </style>
 </head>
 <body>
+  <button class="menu-toggle">☰</button>
   <div class="sidebar">
     <a href="index.html">Home</a>
-    <a href="about-us.html">About Us</a>
-    <a href="gigs.html">Gigs</a>
-    <a href="gallery.html" class="active">Gallery</a>
     <a href="links.html">Links</a>
-    <a href="contact.html">Contact</a>
+    <a href="about-us.html">Band Members</a>
+    <a href="gigs.html">Upcoming Gigs</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact Us</a>
   </div>
 
-  <button class="menu-toggle">☰</button>
-
   <div class="content">
-    <h1>Gallery</h1>
+    <img src="logo.png" alt="Shockwave Logo" 
+         style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;margin-bottom:20px;">
+    <h1>Shockwave Gallery</h1>
+
     <div class="gallery-container">
-      <div class="gallery-item"><img src="gallery1.png" alt="Gallery 1"></div>
-      <div class="gallery-item"><img src="gallery2.png" alt="Gallery 2"></div>
-      <div class="gallery-item"><img src="gallery3.png" alt="Gallery 3"></div>
-      <div class="gallery-item"><img src="gallery4.png" alt="Gallery 4"></div>
-      <div class="gallery-item"><img src="gallery5.png" alt="Gallery 5"></div>
-      <div class="gallery-item"><img src="gallery6.png" alt="Gallery 6"></div>
-      <div class="gallery-item"><img src="gallery7.png" alt="Gallery 7"></div>
-      <div class="gallery-item"><img src="gallery8.png" alt="Gallery 8"></div>
-      <div class="gallery-item"><img src="gallery9.png" alt="Gallery 9"></div>
-      <div class="gallery-item"><img src="gallery10.png" alt="Gallery 10"></div>
+      <div class="gallery-item"><img src="gallery1.png" alt="Gallery Image 1"></div>
+      <div class="gallery-item"><img src="gallery2.png" alt="Gallery Image 2"></div>
+      <div class="gallery-item"><img src="gallery3.png" alt="Gallery Image 3"></div>
+      <div class="gallery-item"><img src="gallery4.png" alt="Gallery Image 4"></div>
+      <div class="gallery-item"><img src="gallery5.png" alt="Gallery Image 5"></div>
+      <div class="gallery-item"><img src="gallery6.png" alt="Gallery Image 6"></div>
+      <div class="gallery-item"><img src="gallery7.png" alt="Gallery Image 7"></div>
+      <div class="gallery-item"><img src="gallery8.png" alt="Gallery Image 8"></div>
+      <div class="gallery-item"><img src="gallery9.png" alt="Gallery Image 9"></div>
+      <div class="gallery-item"><img src="gallery10.png" alt="Gallery Image 10"></div>
+      <div class="gallery-item"><img src="gallery11.png" alt="Gallery Image 11"></div>
+      <div class="gallery-item"><img src="gallery12.png" alt="Gallery Image 12"></div>
+      <div class="gallery-item"><img src="gallery13.png" alt="Gallery Image 13"></div>
+      <div class="gallery-item"><img src="gallery14.png" alt="Gallery Image 14"></div>
+      <div class="gallery-item"><img src="gallery15.png" alt="Gallery Image 15"></div>
+      <div class="gallery-item"><img src="gallery16.png" alt="Gallery Image 16"></div>
+      <div class="gallery-item"><img src="gallery17.png" alt="Gallery Image 17"></div>
+      <div class="gallery-item"><img src="gallery18.png" alt="Gallery Image 18"></div>
+      <div class="gallery-item"><img src="gallery19.png" alt="Gallery Image 19"></div>
+      <div class="gallery-item"><img src="gallery20.png" alt="Gallery Image 20"></div>
     </div>
   </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="close">&times;</span>
-    <img id="lightbox-img" src="">
+    <img id="lightbox-img" src="" alt="Expanded view">
   </div>
 
   <script>
-    // Sidebar toggle
-    const menuToggle = document.querySelector('.menu-toggle');
+    const toggleBtn = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.sidebar');
-    menuToggle.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
 
-    // Lightbox
+    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.lightbox .close');
+    const galleryItems = document.querySelectorAll('.gallery-item img');
 
-    document.querySelectorAll('.gallery-item img').forEach(img => {
+    galleryItems.forEach(img => {
       img.addEventListener('click', () => {
         lightbox.style.display = 'flex';
         lightboxImg.src = img.src;
       });
-
-      // Mark portrait images
-      img.onload = () => {
-        if (img.naturalHeight > img.naturalWidth) {
-          img.classList.add("portrait");
-        }
-      };
     });
 
     closeBtn.addEventListener('click', () => {
       lightbox.style.display = 'none';
+      lightboxImg.src = '';
     });
 
     lightbox.addEventListener('click', (e) => {
       if (e.target !== lightboxImg) {
         lightbox.style.display = 'none';
+        lightboxImg.src = '';
       }
     });
   </script>
