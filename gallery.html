@@ -8,35 +8,35 @@
   <style>
     /* Gallery grid */
     .gallery-container {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      justify-content: center;
       padding: 20px;
     }
 
     .gallery-item {
-      display: inline-block;
       border-radius: 12px;
       border: 2px solid #ff3300;
       box-shadow: 0 0 12px rgba(255, 51, 0, 0.4);
       cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       overflow: hidden;
+      background: #000;
     }
 
     .gallery-item img {
-      display: block;
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      display: block;
       border-radius: 10px;
+      object-fit: contain; /* keep aspect ratio */
+      max-height: 300px;   /* keeps things even */
+      margin: 0 auto;
     }
 
-    /* Portrait images → scale down so not huge */
+    /* Portrait images → shrink so they don’t dominate */
     .gallery-item img.portrait {
-      max-height: 350px;
-      width: auto;
-      margin: 0 auto;
+      max-height: 250px;
     }
 
     .gallery-item:hover {
@@ -73,14 +73,14 @@
       font-weight: bold;
     }
 
-    /* ✅ Mobile layout */
+    /* ✅ Mobile layout: 1 per row */
     @media (max-width: 768px) {
       .gallery-container {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 15px;
       }
-      .gallery-item {
-        max-width: 90%;
+      .gallery-item img {
+        max-height: 350px;
       }
     }
   </style>
@@ -100,26 +100,14 @@
   <div class="content">
     <h1>Gallery</h1>
     <div class="gallery-container">
-      <div class="gallery-item"><img src="gallery1.png" alt="Gallery Image 1"></div>
-      <div class="gallery-item"><img src="gallery2.png" alt="Gallery Image 2"></div>
-      <div class="gallery-item"><img src="gallery3.png" alt="Gallery Image 3"></div>
-      <div class="gallery-item"><img src="gallery4.png" alt="Gallery Image 4"></div>
-      <div class="gallery-item"><img src="gallery5.png" alt="Gallery Image 5"></div>
-      <div class="gallery-item"><img src="gallery6.png" alt="Gallery Image 6"></div>
-      <div class="gallery-item"><img src="gallery7.png" alt="Gallery Image 7"></div>
-      <div class="gallery-item"><img src="gallery8.png" alt="Gallery Image 8"></div>
-      <div class="gallery-item"><img src="gallery9.png" alt="Gallery Image 9"></div>
-      <div class="gallery-item"><img src="gallery10.png" alt="Gallery Image 10"></div>
-      <div class="gallery-item"><img src="gallery11.png" alt="Gallery Image 11"></div>
-      <div class="gallery-item"><img src="gallery12.png" alt="Gallery Image 12"></div>
-      <div class="gallery-item"><img src="gallery13.png" alt="Gallery Image 13"></div>
-      <div class="gallery-item"><img src="gallery14.png" alt="Gallery Image 14"></div>
-      <div class="gallery-item"><img src="gallery15.png" alt="Gallery Image 15"></div>
-      <div class="gallery-item"><img src="gallery16.png" alt="Gallery Image 16"></div>
-      <div class="gallery-item"><img src="gallery17.png" alt="Gallery Image 17"></div>
-      <div class="gallery-item"><img src="gallery18.png" alt="Gallery Image 18"></div>
-      <div class="gallery-item"><img src="gallery19.png" alt="Gallery Image 19"></div>
-      <div class="gallery-item"><img src="gallery20.png" alt="Gallery Image 20"></div>
+      <div class="gallery-item"><img src="gallery1.png" alt="Gallery 1"></div>
+      <div class="gallery-item"><img src="gallery2.png" alt="Gallery 2"></div>
+      <div class="gallery-item"><img src="gallery3.png" alt="Gallery 3"></div>
+      <div class="gallery-item"><img src="gallery4.png" alt="Gallery 4"></div>
+      <div class="gallery-item"><img src="gallery5.png" alt="Gallery 5"></div>
+      <div class="gallery-item"><img src="gallery6.png" alt="Gallery 6"></div>
+      <div class="gallery-item"><img src="gallery7.png" alt="Gallery 7"></div>
+      <div class="gallery-item"><img src="gallery8.png" alt="Gallery 8"></div>
     </div>
   </div>
 
