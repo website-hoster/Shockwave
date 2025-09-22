@@ -21,6 +21,7 @@
       border: 2px solid #ff3300;
       box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .gallery-item img,
     .gallery-item video {
@@ -34,11 +35,12 @@
       transform: scale(1.03);
       box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
     }
-    .gallery-item:hover img {
+    .gallery-item:hover img,
+    .gallery-item:hover video {
       transform: scale(1.1);
     }
 
-    /* Lightbox only for images */
+    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -50,13 +52,19 @@
       background: rgba(0,0,0,0.9);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
-    .lightbox img {
+    .lightbox img,
+    .lightbox video {
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
       border: 3px solid #ff3300;
       box-shadow: 0 0 30px rgba(255,51,0,0.8);
+      background: #000;
+    }
+    .lightbox video {
+      outline: none;
     }
     .lightbox .close {
       position: absolute;
@@ -104,8 +112,8 @@
 
     <div class="gallery-container">
       <!-- Videos first -->
-      <div class="gallery-item"><video src="video1.mp4" controls></video></div>
-      <div class="gallery-item"><video src="video2.mov" controls></video></div>
+      <div class="gallery-item"><video src="video1.mp4" muted></video></div>
+      <div class="gallery-item"><video src="video2.mov" muted></video></div>
 
       <!-- Images -->
       <div class="gallery-item"><img src="gallery1.png" alt="Gallery 1"></div>
@@ -135,30 +143,47 @@
   <div class="lightbox" id="lightbox">
     <span class="close">&times;</span>
     <img id="lightbox-img" src="" alt="Expanded view">
+    <video id="lightbox-video" controls></video>
   </div>
 
   <script>
-    const galleryItems = document.querySelectorAll('.gallery-item img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = document.querySelector('.lightbox .close');
 
-    galleryItems.forEach(img => {
-      img.addEventListener('click', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item img, .gallery-item video');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
         lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
+
+        if(item.tagName === 'IMG') {
+          lightboxImg.style.display = 'block';
+          lightboxVideo.style.display = 'none';
+          lightboxImg.src = item.src;
+        } else if(item.tagName === 'VIDEO') {
+          lightboxImg.style.display = 'none';
+          lightboxVideo.style.display = 'block';
+          lightboxVideo.src = item.src;
+          lightboxVideo.play();
+        }
       });
     });
 
     closeBtn.addEventListener('click', () => {
       lightbox.style.display = 'none';
       lightboxImg.src = '';
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
     });
 
     lightbox.addEventListener('click', e => {
-      if (e.target !== lightboxImg) {
+      if (e.target !== lightboxImg && e.target !== lightboxVideo) {
         lightbox.style.display = 'none';
         lightboxImg.src = '';
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
       }
     });
   </script>
