@@ -22,8 +22,10 @@
       box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
     }
-    .gallery-item img {
+    .gallery-item img,
+    .gallery-item video {
       width: 100%;
       height: auto;
       display: block;
@@ -33,8 +35,16 @@
       transform: scale(1.03);
       box-shadow: 0 0 25px rgba(255, 51, 0, 0.8);
     }
-    .gallery-item:hover img {
+    .gallery-item:hover img,
+    .gallery-item:hover video {
       transform: scale(1.1);
+    }
+
+    /* Captions */
+    .caption {
+      margin-top: 8px;
+      font-size: 0.9em;
+      color: #fff;
     }
 
     /* Lightbox */
@@ -49,8 +59,11 @@
       background: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      padding: 20px;
     }
-    .lightbox img {
+    .lightbox img,
+    .lightbox video {
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
@@ -70,26 +83,10 @@
     .lightbox .close:hover {
       color: #ff3300;
     }
-
-    /* Mobile layout */
-    @media (max-width: 1024px) {
-      .gallery-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 768px) {
-      .gallery-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-    }
-
-    /* Headings */
-    .content h1 {
-      color: #ff3300;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-      margin-bottom: 20px;
-      font-size: 2.5em;
+    .lightbox .caption {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #fff;
     }
   </style>
 </head>
@@ -104,40 +101,39 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-
   <div class="content">
     <img src="logo.png" alt="Shockwave Logo" 
          style="width:220px;height:auto;border-radius:50%;border:3px solid #ff3300;margin-bottom:20px;">
     <h1>Shockwave Gallery</h1>
 
     <div class="gallery-container">
-      <div class="gallery-item"><img src="gallery1.png" alt="Gallery Image 1"></div>
-      <div class="gallery-item"><img src="gallery2.png" alt="Gallery Image 2"></div>
-      <div class="gallery-item"><img src="gallery3.png" alt="Gallery Image 3"></div>
-      <div class="gallery-item"><img src="gallery4.png" alt="Gallery Image 4"></div>
-      <div class="gallery-item"><img src="gallery5.png" alt="Gallery Image 5"></div>
-      <div class="gallery-item"><img src="gallery6.png" alt="Gallery Image 6"></div>
-      <div class="gallery-item"><img src="gallery7.png" alt="Gallery Image 7"></div>
-      <div class="gallery-item"><img src="gallery8.png" alt="Gallery Image 8"></div>
-      <div class="gallery-item"><img src="gallery9.png" alt="Gallery Image 9"></div>
-      <div class="gallery-item"><img src="gallery10.png" alt="Gallery Image 10"></div>
-      <div class="gallery-item"><img src="gallery11.png" alt="Gallery Image 11"></div>
-      <div class="gallery-item"><img src="gallery12.png" alt="Gallery Image 12"></div>
-      <div class="gallery-item"><img src="gallery13.png" alt="Gallery Image 13"></div>
-      <div class="gallery-item"><img src="gallery14.png" alt="Gallery Image 14"></div>
-      <div class="gallery-item"><img src="gallery15.png" alt="Gallery Image 15"></div>
-      <div class="gallery-item"><img src="gallery16.png" alt="Gallery Image 16"></div>
-      <div class="gallery-item"><img src="gallery17.png" alt="Gallery Image 17"></div>
-      <div class="gallery-item"><img src="gallery18.png" alt="Gallery Image 18"></div>
-      <div class="gallery-item"><img src="gallery19.png" alt="Gallery Image 19"></div>
-      <div class="gallery-item"><img src="gallery20.png" alt="Gallery Image 20"></div>
+      <!-- Images -->
+      <div class="gallery-item">
+        <img src="gallery1.png" alt="Gallery Image 1">
+        <p class="caption">gallery1.png</p>
+      </div>
+      <div class="gallery-item">
+        <img src="gallery2.png" alt="Gallery Image 2">
+        <p class="caption">gallery2.png</p>
+      </div>
+
+      <!-- Videos -->
+      <div class="gallery-item">
+        <video src="video1.mp4" muted></video>
+        <p class="caption">video1.mp4</p>
+      </div>
+      <div class="gallery-item">
+        <video src="video2.mov" muted></video>
+        <p class="caption">video2.mov</p>
+      </div>
     </div>
   </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="close">&times;</span>
-    <img id="lightbox-img" src="" alt="Expanded view">
+    <div id="lightbox-content"></div>
+    <p class="caption" id="lightbox-caption"></p>
   </div>
 
   <script>
@@ -147,28 +143,47 @@
       sidebar.classList.toggle('active');
     });
 
-    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxCaption = document.getElementById('lightbox-caption');
     const closeBtn = document.querySelector('.lightbox .close');
-    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    galleryItems.forEach(img => {
-      img.addEventListener('click', () => {
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const video = item.querySelector('video');
+        const caption = item.querySelector('.caption')?.innerText || "";
+
         lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
+        lightboxContent.innerHTML = ""; // clear previous content
+
+        if (img) {
+          const clone = img.cloneNode();
+          clone.style.maxWidth = "90%";
+          clone.style.maxHeight = "80%";
+          lightboxContent.appendChild(clone);
+        } else if (video) {
+          const clone = video.cloneNode();
+          clone.controls = true;
+          clone.autoplay = true;
+          clone.muted = false;
+          lightboxContent.appendChild(clone);
+        }
+
+        lightboxCaption.textContent = caption;
       });
     });
 
     closeBtn.addEventListener('click', () => {
       lightbox.style.display = 'none';
-      lightboxImg.src = '';
+      lightboxContent.innerHTML = "";
     });
 
     lightbox.addEventListener('click', (e) => {
-      if (e.target !== lightboxImg) {
+      if (e.target === lightbox) {
         lightbox.style.display = 'none';
-        lightboxImg.src = '';
+        lightboxContent.innerHTML = "";
       }
     });
   </script>
